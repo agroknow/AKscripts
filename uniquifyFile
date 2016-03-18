@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "Uniquifing file.."
+
+sort -u inFile.out > uniqueFiles.out
+
+echo "Done"

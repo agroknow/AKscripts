@@ -1,0 +1,17 @@
+#!/bin/bash
+
+find / -name "*.rdf*" > RDFFiles.out
+
+filename="RDFFiles.out"
+
+
+while read -r line
+do
+	cat $line | grep "<dct:identifier>" >> idsInRDF.out
+	echo "cat $line | grep $2 >> idsInRDF.out"
+done < "$filename"
+
+echo "Performing cleansing"
+sed -i -e 's/\t<dct:identifier>//g' idsInRDF.out
+sed -i -e 's/<\/dct:identifier>//g' idsInRDF.out
+echo "Cleansing of file complete"
